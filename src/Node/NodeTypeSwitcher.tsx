@@ -5,10 +5,10 @@ import { PageNode } from "./PageNode";
 import { ImageNode } from "./ImageNode";
 
 type NodeTypeSwitcherProps={
-    node: NodeData;
-    updateFocusedIndex(index: number): void;
-    isFocused: boolean;
-    index: number;
+    node: NodeData,
+    updateFocusedIndex(index: number): void,
+    isFocused: boolean,
+    index: number
 };
 
 const TEXT_NODE_TYPES: NodeType[]=["text", "list", "heading1", "heading2", "heading3"];
@@ -25,16 +25,16 @@ export const NodeTypeSwitcher=({
             index={index}
             isFocused={isFocused}
             updateFocusedIndex={updateFocusedIndex}
-        />
+        />;
     }
 
     if(node.type=="page"){
-        return <PageNode node={node} index={index} isFocused={isFocused} />
-    };
+        return <PageNode node={node} index={index} isFocused={isFocused} />;
+    }
 
     if(node.type=="image"){
-        return <ImageNode node={node} index={index} isFocused={isFocused} />
-    };
+        return <ImageNode node={node} index={index} isFocused={isFocused} />;
+    }
 
-    return null
-}
+    return null;
+};

@@ -1,18 +1,18 @@
 
-import { supabase } from "../supabaseClient"
-import { Session } from "@supabase/supabase-js"
-import { createContext, ReactNode, useState, useEffect, useContext } from "react"
+import { supabase } from "../supabaseClient";
+import { Session } from "@supabase/supabase-js";
+import { createContext, ReactNode, useState, useEffect, useContext } from "react";
 
 type AuthSessionContextValue={
     session: Session | null,
     loading: boolean
-}
+};
 
 const AuthSessionContext=createContext<AuthSessionContextValue>({} as AuthSessionContextValue);
 
 type AuthSessionProviderProps={
     children: ReactNode
-}
+};
 
 export const AuthSessionProvider=({children}: AuthSessionProviderProps)=>{
     const [session, setSession]=useState<Session | null>(null);
@@ -27,12 +27,12 @@ export const AuthSessionProvider=({children}: AuthSessionProviderProps)=>{
             }else{
                 console.log("AuthSessionContext Error",error);
             }
-        }
+        };
         auth();
         supabase.auth.onAuthStateChange((_event, session)=>{
             setSession(session);
             setLoading(false);
-        })
+        });
     }, []);
 
     return(

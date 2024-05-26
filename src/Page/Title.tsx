@@ -1,8 +1,8 @@
 
-import {NodeData} from "../Utils/types"
-import {useRef, useEffect} from "react"
-import styles from "./Title.module.css"
-import { nanoid } from "nanoid"
+import {NodeData} from "../Utils/types";
+import {useRef, useEffect} from "react";
+import styles from "./Title.module.css";
+import { nanoid } from "nanoid";
 
 type TitleProps = {
     title: string,

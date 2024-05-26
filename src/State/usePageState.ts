@@ -1,5 +1,5 @@
 
-import { Page, NodeData, NodeType } from "../Utils/types"
+import { Page, NodeData, NodeType } from "../Utils/types";
 import { arrayMove } from "@dnd-kit/sortable";
 import { useSyncedState } from "./useSyncedState";
 import { updatePage } from "../Utils/updatePage";

@@ -9,8 +9,8 @@ type AppStateContextType=ReturnType<typeof usePageState>;
 const AppStateContext=createContext<AppStateContextType>({} as AppStateContextType);
 
 type AppStateProviderProps={
-    children: React.ReactNode;
-    initialState: Page;
+    children: React.ReactNode,
+    initialState: Page
 };
 
 export const AppStateProvider=withInitialState<AppStateProviderProps>(({children, initialState}: AppStateProviderProps)=>{

@@ -1,15 +1,15 @@
 
 import { NodeData } from "../Utils/types";
-import { CSS } from "@dnd-kit/utilities"
+import { CSS } from "@dnd-kit/utilities";
 import { useSortable } from "@dnd-kit/sortable";
 import { NodeTypeSwitcher } from "./NodeTypeSwitcher";
-import styles from "./NodeContainer.module.css"
+import styles from "./NodeContainer.module.css";
 
 type NodeContainerProps={
-    node: NodeData;
-    updateFocusedIndex(index: number): void;
-    isFocused: boolean;
-    index: number;
+    node: NodeData,
+    updateFocusedIndex(index: number): void,
+    isFocused: boolean,
+    index: number
 };
 
 export const NodeContainer=({ 
