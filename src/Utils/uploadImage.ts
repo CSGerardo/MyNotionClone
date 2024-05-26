@@ -13,8 +13,8 @@ export const uploadImage=async(file?: File)=>{
 
         await supabase.storage.from("images").upload(filePath, file);
 
-        return { filePath, fileName }   
+        return { filePath, fileName };   
     }catch(error){
         alert(error);
-    };  
+    }
 };

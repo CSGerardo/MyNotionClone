@@ -11,11 +11,11 @@ type CoverProps={
 };
 
 export const Cover=({filePath, changePageCover}: CoverProps)=>{
-    const [imageToDelete, setImageToDelete]=useState("")
+    const [imageToDelete, setImageToDelete]=useState("");
 
     const deleteImageFromStorage=async(image: string)=>{
         await supabase.storage.from('images').remove([image]);
-    }
+    };
 
     const fileInputRef=useRef<HTMLInputElement>(null);
 
@@ -29,11 +29,11 @@ export const Cover=({filePath, changePageCover}: CoverProps)=>{
 
         if(result?.filePath){
             if(imageToDelete.length){
-                deleteImageFromStorage(imageToDelete)
+                deleteImageFromStorage(imageToDelete);
             }
             setImageToDelete(result.filePath);
             changePageCover(result.filePath);
-        };
+        }
     };
 
     return (

@@ -12,7 +12,7 @@ type ImageNodeProps={
     node: NodeData,
     isFocused: boolean,
     index: number
-}
+};
 
 export const ImageNode=({ node, isFocused, index }: ImageNodeProps)=>{
     const { removeNodeByIndex, changeNodeValue, changeNodeType }=UseAppState();
@@ -25,11 +25,11 @@ export const ImageNode=({ node, isFocused, index }: ImageNodeProps)=>{
             fileInputRef.current?.click();
         };
         counter++;
-    }, [node.value])
+    }, [node.value]);
 
     const deleteImageFromStorage=async(image: string)=>{
         await supabase.storage.from('images').remove([image]);
-    }
+    };
 
     useEffect(()=>{
         const handleKeyDown=(event: KeyboardEvent)=>{
@@ -39,16 +39,16 @@ export const ImageNode=({ node, isFocused, index }: ImageNodeProps)=>{
                 if(node.value.length){
                     deleteImageFromStorage(node.value);
                 }
-            };
+            }
             if(event.key==="Enter"){
                 fileInputRef.current?.click();
-            };
+            }
         };
         if(isFocused){
             window.addEventListener("keydown", handleKeyDown);
         }else{
             window.removeEventListener("keydown", handleKeyDown);
-        };
+        }
 
         return ()=>{
             window.removeEventListener("keydown", handleKeyDown);
@@ -60,12 +60,12 @@ export const ImageNode=({ node, isFocused, index }: ImageNodeProps)=>{
         const target=event.target;
         if(!target.files){
             changeNodeType(index, "text");
-        };
+        }
         try{
             const result=await uploadImage(target.files?.[0]);
             if(result?.filePath){
                 changeNodeValue(index, result?.filePath);
-            };
+            }
         }catch(error){
             changeNodeType(index, "text");
         }

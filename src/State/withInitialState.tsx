@@ -9,9 +9,9 @@ import { Loader } from "../Components/Loader";
 
 type InjectedProps={
     initialState: Page
-}
+};
 
-type PropsWithoutInjected<TBaseProps>=Omit<TBaseProps, keyof InjectedProps>
+type PropsWithoutInjected<TBaseProps>=Omit<TBaseProps, keyof InjectedProps>;
 
 export function withInitialState<TProps>(
     WrappedComponent: React.ComponentType<PropsWithoutInjected<TProps> & InjectedProps>
@@ -27,8 +27,8 @@ export function withInitialState<TProps>(
 
         useEffect(()=>{
             if(inProgress.current){
-                return
-            };
+                return;
+            }
             setIsLoading(true);
             inProgress.current = true;
             const fetchInitialState=async()=>{
@@ -38,14 +38,14 @@ export function withInitialState<TProps>(
                     if(!user){
                         throw new Error("User is not logged in");
                     }
-                    const { data } = await supabase.from("pages").select("title, id, cover, nodes, slug").match({ slug: pageSlug, created_by: user.id })
+                    const { data } = await supabase.from("pages").select("title, id, cover, nodes, slug").match({ slug: pageSlug, created_by: user.id });
 
                     if(data?.[0]){
                         setInitialState(data?.[0]);
                         inProgress.current=false;
                         setIsLoading(false);
-                        return
-                    };
+                        return;
+                    }
 
                     if(pageSlug==="start"){
                         await supabase.from("pages").insert({...startPageScaffold, slug: "start", created_by: user.id});
@@ -54,12 +54,12 @@ export function withInitialState<TProps>(
                         setInitialState(data?.[0]);
                     }else{
                         setInitialState(data?.[0]);
-                    };
+                    }
                 }catch(error){
                     if(error instanceof Error){
                         setError(error);
-                    };
-                };
+                    }
+                }
                 inProgress.current = false;
                 setIsLoading(false);
             };
@@ -98,4 +98,4 @@ export function withInitialState<TProps>(
 
         return <WrappedComponent {...props} initialState={initialState}/>
     };
-};
+}

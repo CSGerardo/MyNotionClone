@@ -6,7 +6,7 @@ import { Loader } from "./Loader";
 
 type FileImageProps={
     filePath: string
-} & React.ImgHTMLAttributes<HTMLImageElement>
+} & React.ImgHTMLAttributes<HTMLImageElement>;
 
 export const FileImage=({ filePath, ...props }: FileImageProps)=>{
     const [image, setImage]=useState("");
@@ -20,18 +20,18 @@ export const FileImage=({ filePath, ...props }: FileImageProps)=>{
                 const url=URL.createObjectURL(data);
                 setImage(url);
                 setLoading(false);
-            };
+            }
         };
         if(filePath && filePath.length>0){
             downloadImage(filePath);
-        };
+        }
     }, [filePath]);
 
     if(loading){
         return <div className={styles.centeredFlex}>
             <Loader/>
-        </div>
-    };
+        </div>;
+    }
 
-    return <img src={image} alt={filePath} {...props} />
+    return <img src={image} alt={filePath} {...props} />;
 };

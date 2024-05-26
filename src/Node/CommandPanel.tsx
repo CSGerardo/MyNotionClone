@@ -1,18 +1,18 @@
 
-import { useState, useEffect } from "react"
-import { NodeType } from "../Utils/types"
-import { useOverflowsScreenBottom } from "./useOverflowsScreenBottom"
-import styles from "./CommandPanel.module.css"
-import cx from "classnames"
+import { useState, useEffect } from "react";
+import { NodeType } from "../Utils/types";
+import { useOverflowsScreenBottom } from "./useOverflowsScreenBottom";
+import styles from "./CommandPanel.module.css";
+import cx from "classnames";
 
 type CommandPanelProps={
-    nodeText: string;
-    selectItem: (nodeType: NodeType)=> void;
+    nodeText: string,
+    selectItem: (nodeType: NodeType)=> void
 };
 
 type SupportedNodeType={
-    value: NodeType;
-    name: string;    
+    value: NodeType,
+    name: string  
 };
 
 const supportedNodeTypes: SupportedNodeType[]=[
@@ -23,7 +23,7 @@ const supportedNodeTypes: SupportedNodeType[]=[
     {value: "heading1", name: "Heading 1"},
     {value: "heading2", name: "Heading 2"},
     {value: "heading3", name: "Heading 3"},
-]
+];
 
 export const CommandPanel=({ selectItem, nodeText }: CommandPanelProps)=>{
     const [selecedtItemIndex, setSelectedItemIndex]=useState(0);
@@ -47,8 +47,8 @@ export const CommandPanel=({ selectItem, nodeText }: CommandPanelProps)=>{
         const normalizedValue=nodeText.toLowerCase().replace(/\//, "");
             setSelectedItemIndex(
                 supportedNodeTypes.findIndex(item=>item.value.match(normalizedValue))
-            )
-    }, [nodeText])
+            );
+    }, [nodeText]);
 
     return(
         <div ref={ref}
@@ -77,5 +77,5 @@ export const CommandPanel=({ selectItem, nodeText }: CommandPanelProps)=>{
                 })}
             </ul>
         </div>
-    )
+    );
 };

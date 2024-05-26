@@ -8,10 +8,10 @@ import { CommandPanel } from "./CommandPanel";
 import cx from "classnames";
 
 type BasicNodeProps={
-    node: NodeData;
-    updateFocusedIndex(index: number): void;
-    isFocused: boolean;
-    index: number;
+    node: NodeData,
+    updateFocusedIndex(index: number): void,
+    isFocused: boolean,
+    index: number,
 };
 
 export const BasicNode=({
@@ -58,10 +58,10 @@ export const BasicNode=({
             if(event.key==="Enter"){
                 event.preventDefault();
                 if(target.textContent?.[0]==="/"){
-                    return
+                    return;
                 }
                 addNode({type: node.type, value: "", id: nanoid()}, index+1);
-                updateFocusedIndex(index+1)
+                updateFocusedIndex(index+1);
             }
             if(event.key==="Backspace"){
                 if(target.textContent?.length===0){

@@ -1,9 +1,9 @@
 
-import { useState, FormEvent } from "react"
+import { useState, FormEvent } from "react";
 import { UseAuthSession } from "./AuthSessionContext";
 import { Navigate } from "react-router-dom";
 import styles from "../Utils/utils.module.css";
-import { supabase } from "../supabaseClient"
+import { supabase } from "../supabaseClient";
 
 export const Auth=()=>{
     const [loading, setLoading]=useState(false);
@@ -26,7 +26,7 @@ export const Auth=()=>{
     };
 
     if(session){
-        return <Navigate to="/" />
+        return <Navigate to="/" />;
     }
 
     return (

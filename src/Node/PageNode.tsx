@@ -20,19 +20,19 @@ export const PageNode=({ node, isFocused, index }: PageNodeProps)=>{
 
     const deletePageFromStorage=async(slug: string)=>{
         await supabase.from('pages').delete().eq("slug", slug);
-    }
+    };
 
     useEffect(()=>{
         const handleKeyDown=(event: KeyboardEvent)=>{
             event.preventDefault();
             if(event.key==="Backspace"){
                 removeNodeByIndex(index);
-                deletePageFromStorage(node.value)
+                deletePageFromStorage(node.value);
             };
             if(event.key==="Enter"){
                 navigate(`/${node.value}`);
             };
-        }
+        };
         if(isFocused){
             window.addEventListener("keydown", handleKeyDown);
         }else{
@@ -41,7 +41,7 @@ export const PageNode=({ node, isFocused, index }: PageNodeProps)=>{
 
         return ()=>{
             window.removeEventListener("keydown", handleKeyDown);
-        }
+        };
 
     }, [isFocused, removeNodeByIndex, index, navigate, node]);
 
@@ -52,7 +52,7 @@ export const PageNode=({ node, isFocused, index }: PageNodeProps)=>{
         };
         if(node.type==="page" && node.value){
             fetchPageTitle();
-        };
+        }
     }, [node.type, node.value]);
 
     const navigateToPage=()=>{
